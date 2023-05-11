@@ -23,11 +23,28 @@ export interface Env {
 }
 
 export default {
-	async fetch(
-		request: Request,
-		env: Env,
-		ctx: ExecutionContext
-	): Promise<Response> {
-		return new Response("Hello World!");
-	},
+    async fetch(
+        request: Request,
+        env: Env,
+        ctx: ExecutionContext
+    ): Promise<Response> {
+        const someHost = "https://examples.cloudflareworkers.com/demos";
+        const url = new URL(request.url)
+        const params = url.searchParams
+        var link = decodeURI(params.get("link"))
+        console.log(link)
+
+
+        const init = {
+            headers: {
+                "content-type": "text/html;charset=UTF-8",
+            },
+        };
+
+        let response = await fetch(link, init)
+        response = new Response(response.body, response)
+        response.headers.set("Access-Control-Allow-Origin", "*")
+        response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+        return response
+    },
 };
