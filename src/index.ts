@@ -38,6 +38,7 @@ export default {
         const init = {
             headers: {
                 "content-type": "text/html;charset=UTF-8",
+                "User-Agent": "Cloudflare worker http proxy",
             },
         };
 
