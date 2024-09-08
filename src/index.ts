@@ -31,7 +31,7 @@ export default {
         const someHost = "https://examples.cloudflareworkers.com/demos";
         const url = new URL(request.url)
         const params = url.searchParams
-        var link = decodeURI(params.get("link"))
+        var link = decodeURIComponent(params.get("link"))
         console.log(link)
 
 
