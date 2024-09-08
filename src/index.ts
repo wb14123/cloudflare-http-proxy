@@ -28,7 +28,6 @@ export default {
         env: Env,
         ctx: ExecutionContext
     ): Promise<Response> {
-        const someHost = "https://examples.cloudflareworkers.com/demos";
         const url = new URL(request.url)
         const params = url.searchParams
         var link = decodeURIComponent(params.get("link"))
