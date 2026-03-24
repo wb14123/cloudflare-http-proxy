@@ -30,7 +30,7 @@ export default {
     ): Promise<Response> {
         const url = new URL(request.url)
         const params = url.searchParams
-        var link = decodeURIComponent(params.get("link"))
+        var link = decodeURIComponent(params.get("link") ?? "")
         console.log(link)
 
 
